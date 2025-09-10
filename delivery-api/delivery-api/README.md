@@ -1,9 +1,10 @@
 # Delivery Tech API
-Sistema de delivery desenvolvido com Spring Boot e Java 21.
+Sistema de delivery desenvolvido com Spring Boot 3.5.5 e Java 21, utilizado no Curso Arquitetura de sistemas - FAT: Escola Técnica.
+
 
 ## 🚀 Tecnologias
 - **Java 21 LTS** (versão mais recente)
-- Spring Boot 3.2.x
+- Spring Boot 3.5.5
 - Spring Web
 - Spring Data JPA
 - H2 Database
@@ -18,7 +19,7 @@ Sistema de delivery desenvolvido com Spring Boot e Java 21.
 ## 🏃‍♂️ Como executar
 1. **Pré-requisitos:** JDK 21 instalado
 2. Clone o repositório
-3. Execute: `./mvnw spring-boot:run`
+3. Execute: './mvnw spring-boot:run'
 4. Acesse: http://localhost:8080/health
 
 ## 📋 Endpoints
