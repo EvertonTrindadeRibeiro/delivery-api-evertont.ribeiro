@@ -1,4 +1,4 @@
-package com.deliverytech.delivery_api;
+package com.deliverytech.delivery.delivery_api;
 
 public record AppInfo(
     String application,

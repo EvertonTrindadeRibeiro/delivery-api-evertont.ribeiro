@@ -33,5 +33,5 @@ Sistema de delivery desenvolvido com Spring Boot 3.5.5 e Java 21, utilizado no C
 - Profile: development
 
 ## 👨‍💻 Desenvolvedor
-Everton Ribeiro - Arquitetura de Sistemas: TI56 02726
-Desenvolvido com JDK 21 e Spring Boot 3.5.5
+- Everton Ribeiro - Arquitetura de Sistemas: TI56 02726
+- Desenvolvido com JDK 21 e Spring Boot 3.5.5
