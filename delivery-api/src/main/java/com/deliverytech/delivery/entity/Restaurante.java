@@ -1,4 +1,4 @@
-package com.deliverytech.delivery.model;
+package com.deliverytech.delivery.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,18 +6,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Cliente {
+public class Restaurante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
-    private String email;
+    private String categoria;
     private String telefone;
 
-    // Construtor padrão
-    public Cliente() {}
+    public Restaurante() {}
 
     // Getters e setters
     public Long getId() {
@@ -36,12 +35,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getTelefone() {

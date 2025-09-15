@@ -8,6 +8,6 @@ class DeliveryApiApplicationTests {
 
     @Test
     void contextLoads() {
-        // Teste básico para garantir que o contexto da aplicação inicia sem erros
+        // Teste básico: verifica se o contexto Spring Boot carrega sem erros
     }
 }

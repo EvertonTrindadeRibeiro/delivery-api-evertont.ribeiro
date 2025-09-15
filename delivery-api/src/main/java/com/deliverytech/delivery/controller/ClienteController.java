@@ -1,7 +1,8 @@
 package com.deliverytech.delivery.controller;
 
-import com.deliverytech.delivery.model.Cliente;
+import com.deliverytech.delivery.entity.Cliente;
 import com.deliverytech.delivery.repository.ClienteRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
