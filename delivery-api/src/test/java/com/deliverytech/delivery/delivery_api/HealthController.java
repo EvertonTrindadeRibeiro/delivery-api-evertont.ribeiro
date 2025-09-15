@@ -13,7 +13,7 @@ public class HealthController {
  	public Map<String, String> health() {
 
  		return Map.of(
- 		"status", "UP",
+		"status", "UP",
  		"timemestamp", LocalDateTime.now().toString(),
  		"service", "Delivery API",
  		"javaVersion", System.getProperty("java.version")
@@ -35,7 +35,9 @@ public class HealthController {
  } 
 
   // Record para demonstrar recurso do Java 14+ (disponível no JDK 21)
- public record AppInfo(
+ 
+ 
+public record AppInfo(
  String applicaƟon,
  String version,
  String developer,
