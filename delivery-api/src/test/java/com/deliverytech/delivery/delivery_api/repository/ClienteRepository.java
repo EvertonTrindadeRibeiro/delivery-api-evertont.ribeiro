@@ -1,5 +1,7 @@
-package com.deliverytech.delivery.delivery_api.repository;
+package com.deliverytech.delivery.repository;
 
-public class ClienteRepository {
-    
+import com.deliverytech.delivery.model.Cliente;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 }

@@ -1,24 +1,36 @@
-package com.deliverytech.delivery.delivery_api.controller;
+package com.deliverytech.delivery.controller;
 
-import org.springframework.beans.factory.annotation.Autowire;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.deliverytech.delivery.model.Cliente;
+import com.deliverytech.delivery.repository.ClienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/clientes")
 public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
 
-    @GetMapping("/clientes")
-    public String listar(Model model) {
-        List<Cliente> clientes = clienteRepository.findAll();
-        model.addAttribute("clientes", clientes);
-        // Nome da view (HTML) a ser renderizada
-        return "clientes"; 
+    @GetMapping
+    public List<Cliente> listarTodos() {
+        return clienteRepository.findAll();
     }
 
+    @PostMapping
+    public Cliente criar(@RequestBody Cliente cliente) {
+        return clienteRepository.save(cliente);
+    }
+
+    @GetMapping("/{id}")
+    public Cliente buscarPorId(@PathVariable Long id) {
+        return clienteRepository.findById(id).orElse(null);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        clienteRepository.deleteById(id);
+    }
 }

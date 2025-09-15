@@ -1,2 +1,37 @@
-/mvnw text eol=lf
-*.cmd text eol=crlf
+# Normalização de fim de linha para arquivos de texto
+* text=auto
+
+# Arquivos Java
+*.java text diff=java
+
+# Arquivos XML (pom.xml, configs)
+*.xml text
+
+# Arquivos de propriedades
+*.properties text
+
+# Arquivos de configuração YAML
+*.yml text
+*.yaml text
+
+# Arquivos Markdown e texto
+*.md text
+*.txt text
+
+# Arquivos de script
+*.sh text eol=lf
+*.bat text eol=crlf
+
+# Arquivos binários (não devem ser tratados como texto)
+*.jar binary
+*.class binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+
+# Maven Wrapper
+mvnw text eol=lf
+mvnw.cmd text eol=crlf
