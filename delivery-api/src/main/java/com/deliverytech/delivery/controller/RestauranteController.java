@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.deliverytech.delivery.entity.Restaurante;
+import com.deliverytech.delivery.model.Restaurante;
 import com.deliverytech.delivery.repository.RestauranteRepository;
 
 @RestController
