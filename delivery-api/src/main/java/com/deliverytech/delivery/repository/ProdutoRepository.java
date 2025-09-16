@@ -1,12 +1,17 @@
-package com.deliverytech.delivery.repository
+package com.deliverytech.delivery.repository;
 
-import com.deliverytech.delivery.entity.Produto;
-import org.springframework.data.jpa.repository.JpaRepository; 
-import java.math.BigDecimal; 
+import java.math.BigDecimal;
 import java.util.List;
 
-@Repository 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.deliverytech.delivery.model.Produto;
+ 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> { 
+
+    List<Produto> findByNomeContainingIgnoreCase(String nome);
+
+    List<Produto> findByPrecoBetween(BigDecimal min, BigDecimal max);
     // Produtos por restaurante 
     List<Produto> findByRestauranteId(Long restauranteId); 
 
