@@ -1,6 +1,7 @@
 package com.deliverytech.delivery.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -10,14 +11,21 @@ public class Restaurante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "O nome do restaurante é obrigatório")
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
+    @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
 
+    @NotBlank(message = "O telefone é obrigatório")
     private String telefone;
-    private Boolean ativo;
+
+    @NotNull
+    private Boolean ativo = true;
+
+    @NotNull(message = "A taxa de entrega é obrigatória")
+    @DecimalMin(value = "0.00", message = "A taxa de entrega não pode ser negativa")
     private BigDecimal taxaEntrega;
 
     public Restaurante() {

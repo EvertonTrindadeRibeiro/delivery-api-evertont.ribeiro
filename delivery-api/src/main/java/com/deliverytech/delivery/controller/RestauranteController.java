@@ -3,19 +3,16 @@ package com.deliverytech.delivery.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.deliverytech.delivery.model.Restaurante;
 import com.deliverytech.delivery.repository.RestauranteRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
-@RequestMapping("Restaurante")
+@RequestMapping("/restaurantes")
 public class RestauranteController {
 
     @Autowired
@@ -27,17 +24,38 @@ public class RestauranteController {
     }
 
     @PostMapping
-    public Restaurante criar(@RequestBody Restaurante restaurante) {
-        return restauranteRepository.save(restaurante);
+    public ResponseEntity<Restaurante> criar(@Valid @RequestBody Restaurante restaurante) {
+        Restaurante salvo = restauranteRepository.save(restaurante);
+        return ResponseEntity.ok(salvo);
     }
 
     @GetMapping("/{id}")
-    public Restaurante buscarPorId(@PathVariable Long id) {
-        return restauranteRepository.findById(id).orElse(null);
+    public ResponseEntity<Restaurante> buscarPorId(@PathVariable Long id) {
+        return restauranteRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Restaurante> atualizar(@PathVariable Long id, @Valid @RequestBody Restaurante dados) {
+        return restauranteRepository.findById(id)
+                .map(restaurante -> {
+                    restaurante.setNome(dados.getNome());
+                    restaurante.setCategoria(dados.getCategoria());
+                    restaurante.setTelefone(dados.getTelefone());
+                    restaurante.setTaxaEntrega(dados.getTaxaEntrega());
+                    restaurante.setAtivo(dados.getAtivo());
+                    return ResponseEntity.ok(restauranteRepository.save(restaurante));
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
-        restauranteRepository.deleteById(id);
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        if (restauranteRepository.existsById(id)) {
+            restauranteRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }
