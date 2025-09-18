@@ -1,11 +1,7 @@
 package com.deliverytech.delivery.model;
 
+import jakarta.persistence.*;
 import java.math.BigDecimal;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
 public class Restaurante {
@@ -13,15 +9,21 @@ public class Restaurante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
-    private String categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
     private String telefone;
     private Boolean ativo;
     private BigDecimal taxaEntrega;
 
-public Restaurante() {
-    this.ativo = true;
-}
+    public Restaurante() {
+        this.ativo = true;
+    }
+
     // Getters e setters
     public Long getId() {
         return id;
@@ -39,11 +41,11 @@ public Restaurante() {
         this.nome = nome;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
-    
-    public void setCategoria(String categoria) {
+
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
@@ -54,6 +56,7 @@ public Restaurante() {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     public Boolean getAtivo() {
         return ativo;
     }
@@ -61,6 +64,7 @@ public Restaurante() {
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
+
     public BigDecimal getTaxaEntrega() {
         return taxaEntrega;
     }
@@ -69,5 +73,3 @@ public Restaurante() {
         this.taxaEntrega = taxaEntrega;
     }
 }
-
-

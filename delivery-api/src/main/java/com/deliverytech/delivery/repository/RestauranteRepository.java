@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.deliverytech.delivery.model.Restaurante;
 
 @Repository
+private Set<Categoria> categorias;
 public interface RestauranteRepository extends JpaRepository<Restaurante, Long> {
 
     //Busca por categoria
