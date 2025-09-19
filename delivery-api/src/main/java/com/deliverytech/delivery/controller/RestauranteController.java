@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.deliverytech.delivery.model.Restaurante;
 import com.deliverytech.delivery.repository.RestauranteRepository;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/restaurantes")
