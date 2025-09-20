@@ -1,0 +1,47 @@
+# Diretórios e arquivos gerados pelo Maven
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+mvnw
+mvnw.cmd
+
+# Logs
+*.log
+
+# IDEs e editores
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos compilados
+*.class
+*.jar
+*.war
+*.ear
+
+# Banco H2 local (caso use arquivo em vez de memória)
+*.mv.db
+*.h2.db
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.old
+
+# Arquivos de configuração pessoais
+.env
+*.local.properties
+
+# Testes e relatórios
+/test-output/
+/coverage/
+*.exec
+
+# Arquivos de build alternativos
+build/
+out/
