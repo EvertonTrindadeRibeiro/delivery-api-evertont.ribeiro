@@ -35,45 +35,51 @@ A DeliveryTech está em expansão e precisa de um sistema funcional para demonst
 
 1. Pré-requisitos: JDK 21 instalado
 2. Clone o repositório:
+```htm
    **bash**
    git clone https://github.com/EvertonTrindadeRibeiro/delivery-api-evertont.ribeiro.git
    cd delivery-api-evertont.ribeiro
    ./mvnw spring-boot:run
-
+```
 3. Acesse:
+```htm
 http://localhost:8080/health
 http://localhost:8080/info
 http://localhost:8080/h2-console
-
+```
 ---
 
 ## 📋 Endpoints
 ### 👥 ClienteController
+```php
 POST /clientes – Cadastrar cliente
 GET /clientes – Listar todos os clientes
 GET /clientes/{id} – Buscar cliente por ID
 PUT /clientes/{id} – Atualizar cliente
 DELETE /clientes/{id} – Inativar cliente
-
+```
 ### 🍽️ RestauranteController
+```php
 POST /restaurantes – Cadastrar restaurante
 GET /restaurantes – Listar todos
 GET /restaurantes/categoria/{categoria} – Buscar por categoria
 PUT /restaurantes/{id} – Atualizar restaurante
 DELETE /restaurantes/{id} – Inativar restaurante
-
+```
 ### 🛒 ProdutoController
+```php
 POST /restaurantes/{id}/produtos – Cadastrar produto
 GET /restaurantes/{id}/produtos – Listar produtos por restaurante
 GET /produtos/categoria/{categoria} – Buscar por categoria
 PUT /produtos/{id} – Atualizar produto
 DELETE /produtos/{id} – Inativar produto
-
+```
 ### 📦 PedidoController
+```php
 POST /pedidos – Criar pedido
 GET /pedidos/cliente/{id} – Buscar pedidos por cliente
 PUT /pedidos/{id}/status – Atualizar status do pedido
-
+```
 ### 🧪 Testes e Validação
 - Testes realizados via Postman (collection incluída em /postman)
 - Dados de exemplo disponíveis no H2 Console
