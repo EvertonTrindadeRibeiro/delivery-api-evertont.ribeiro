@@ -2,60 +2,54 @@ package com.deliverytech.delivery.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.deliverytech.delivery.model.Restaurante;
-import com.deliverytech.delivery.repository.RestauranteRepository;
-
-import jakarta.validation.Valid;
+import com.deliverytech.delivery.entity.Restaurante;
+import com.deliverytech.delivery.service.RestauranteService;
 
 @RestController
 @RequestMapping("/restaurantes")
 public class RestauranteController {
 
-    @Autowired
-    private RestauranteRepository restauranteRepository;
+    private final RestauranteService restauranteService;
 
-    @GetMapping
-    public List<Restaurante> listar() {
-        return restauranteRepository.findAll();
+    public RestauranteController(RestauranteService restauranteService) {
+        this.restauranteService = restauranteService;
     }
 
-    @PostMapping
-    public ResponseEntity<Restaurante> criar(@Valid @RequestBody Restaurante restaurante) {
-        Restaurante salvo = restauranteRepository.save(restaurante);
-        return ResponseEntity.ok(salvo);
+    @GetMapping
+    public List<Restaurante> listarTodos() {
+        return restauranteService.listarTodos();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Restaurante> buscarPorId(@PathVariable Long id) {
-        return restauranteRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public Restaurante buscarPorId(@PathVariable Long id) {
+        return restauranteService.buscarPorId(id);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Restaurante> atualizar(@PathVariable Long id, @Valid @RequestBody Restaurante dados) {
-        return restauranteRepository.findById(id)
-                .map(restaurante -> {
-                    restaurante.setNome(dados.getNome());
-                    restaurante.setCategoria(dados.getCategoria());
-                    restaurante.setTelefone(dados.getTelefone());
-                    restaurante.setTaxaEntrega(dados.getTaxaEntrega());
-                    restaurante.setAtivo(dados.getAtivo());
-                    return ResponseEntity.ok(restauranteRepository.save(restaurante));
-                })
-                .orElse(ResponseEntity.notFound().build());
+    @PostMapping
+    public Restaurante salvar(@RequestBody Restaurante restaurante) {
+        return restauranteService.salvar(restaurante);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
-        if (restauranteRepository.existsById(id)) {
-            restauranteRepository.deleteById(id);
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+    public void excluir(@PathVariable Long id) {
+        restauranteService.excluir(id);
+    }
+
+    @GetMapping("/categoria/{categoria}")
+    public List<Restaurante> listarPorCategoria(@PathVariable String categoria) {
+        return restauranteService.listarPorCategoria(categoria);
+    }
+
+    @GetMapping("/ativos")
+    public List<Restaurante> listarAtivos() {
+        return restauranteService.listarAtivos();
     }
 }

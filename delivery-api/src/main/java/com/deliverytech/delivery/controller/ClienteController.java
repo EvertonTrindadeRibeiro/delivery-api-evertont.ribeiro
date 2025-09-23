@@ -1,48 +1,45 @@
 package com.deliverytech.delivery.controller;
 
-import com.deliverytech.delivery.model.Cliente;
-import com.deliverytech.delivery.repository.ClienteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.deliverytech.delivery.entity.Cliente;
+import com.deliverytech.delivery.service.ClienteService;
+
 @RestController
-@RequestMapping("/api/clientes")
+@RequestMapping("/clientes")
 public class ClienteController {
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+    private final ClienteService clienteService;
+
+    public ClienteController(ClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
 
     @GetMapping
     public List<Cliente> listarTodos() {
-        return clienteRepository.findAll();
+        return clienteService.listarTodos();
     }
 
     @GetMapping("/{id}")
     public Cliente buscarPorId(@PathVariable Long id) {
-        return clienteRepository.findById(id).orElse(null);
+        return clienteService.buscarPorId(id);
     }
 
     @PostMapping
-    public Cliente criar(@RequestBody Cliente cliente) {
-        return clienteRepository.save(cliente);
-    }
-
-    @PutMapping("/{id}")
-    public Cliente atualizar(@PathVariable Long id, @RequestBody Cliente clienteAtualizado) {
-        return clienteRepository.findById(id)
-                .map(cliente -> {
-                    cliente.setNome(clienteAtualizado.getNome());
-                    cliente.setEmail(clienteAtualizado.getEmail());
-                    cliente.setTelefone(clienteAtualizado.getTelefone());
-                    return clienteRepository.save(cliente);
-                })
-                .orElse(null);
+    public Cliente salvar(@RequestBody Cliente cliente) {
+        return clienteService.salvar(cliente);
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
-        clienteRepository.deleteById(id);
+    public void excluir(@PathVariable Long id) {
+        clienteService.excluir(id);
     }
 }
