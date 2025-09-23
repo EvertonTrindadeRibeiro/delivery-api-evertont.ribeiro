@@ -45,6 +45,8 @@ http://localhost:8080/health
 http://localhost:8080/info
 http://localhost:8080/h2-console
 
+---
+
 ## 📋 Endpoints
 ### 👥 ClienteController
 POST /clientes – Cadastrar cliente
@@ -80,6 +82,7 @@ PUT /pedidos/{id}/status – Atualizar status do pedido
 
 ## 🔧 Configuração
 - Arquivo application.properties:
+```php
 server.port=8080
 spring.datasource.url=jdbc:h2:mem:deliverydb
 spring.datasource.driverClassName=org.h2.Driver
@@ -94,7 +97,8 @@ spring.jpa.properties.hibernate.format_sql=true
 spring.devtools.restart.enabled=true
 spring.jpa.open-in-view=false
 logging.level.org.springframework.web=DEBUG
+```
 
 ## 👨‍💻 Desenvolvedor
-Everton Ribeiro — Turma TI56 02726 
-Desenvolvido com JDK 21 e Spring Boot 3.5.6
+- Everton Ribeiro — Turma TI56 02726 
+- Desenvolvido com JDK 21 e Spring Boot 3.5.6

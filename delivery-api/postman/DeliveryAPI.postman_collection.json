@@ -1,0 +1,68 @@
+{
+  "info": {
+    "name": "DeliveryAPI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Cliente",
+      "item": [
+        {
+          "name": "Listar todos os clientes",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/clientes"
+          }
+        },
+        {
+          "name": "Cadastrar cliente",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"nome\": \"João Silva\", \"email\": \"joao@email.com\" }"
+            },
+            "url": "{{base_url}}/clientes"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Restaurante",
+      "item": [
+        {
+          "name": "Listar restaurantes ativos",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/restaurantes/ativos"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Produto",
+      "item": [
+        {
+          "name": "Listar produtos por restaurante",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/produtos/restaurante/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pedido",
+      "item": [
+        {
+          "name": "Listar pedidos por cliente",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/pedidos/cliente/1"
+          }
+        }
+      ]
+    }
+  ]
+}
