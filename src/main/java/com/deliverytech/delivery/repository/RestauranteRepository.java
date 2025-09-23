@@ -1,25 +1,15 @@
 package com.deliverytech.delivery.repository;
 
-import java.math.BigDecimal;
+import com.deliverytech.delivery.entity.Restaurante;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-import com.deliverytech.delivery.model.Restaurante;
-
-@Repository
 public interface RestauranteRepository extends JpaRepository<Restaurante, Long> {
 
-    // Busca por categoria (campo singular)
-    List<Restaurante> findByCategoriaId(Long id);
+    List<Restaurante> findByNomeContainingIgnoreCase(String nome);
 
-    // Busca por restaurante ativo
-    List<Restaurante> findByAtivoTrue();
+    List<Restaurante> findByCategoria(String categoria);
 
-    // Por taxa de entrega menor ou igual
-    List<Restaurante> findByTaxaEntregaLessThanEqual(BigDecimal valor);
-
-    // Top 5 restaurantes por nome (ordem alfabética)
-    List<Restaurante> findTop5ByOrderByNomeAsc();
+    List<Restaurante> findByAtivoTrueOrderByAvaliacaoDesc();
 }

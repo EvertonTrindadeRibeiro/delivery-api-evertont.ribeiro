@@ -41,7 +41,5 @@ Sistema de delivery desenvolvido com **Spring Boot 3.2.5** e **Java 21**, como p
 - Profile: development
 
 ## 👨‍💻 Desenvolvedor
-- Everton Ribeiro 
-    Curso Arquitetura de Sistemas — FAT 
-    Matrícula: TI56 02726 
-    Projeto desenvolvido com JDK 21 e Spring Boot 3.2.5
+- Everton Ribeiro - Arquitetura de Sistemas — FAT (Matrícula: TI56 02726 )
+- Projeto desenvolvido com JDK 21 e Spring Boot 3.5.5

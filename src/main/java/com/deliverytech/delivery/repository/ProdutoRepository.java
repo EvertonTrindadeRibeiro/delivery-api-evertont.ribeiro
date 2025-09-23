@@ -1,26 +1,16 @@
 package com.deliverytech.delivery.repository;
 
-import java.math.BigDecimal;
-import java.util.List;
-
+import com.deliverytech.delivery.entity.Produto;
+import com.deliverytech.delivery.entity.Restaurante;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.deliverytech.delivery.model.Produto;
- 
-public interface ProdutoRepository extends JpaRepository<Produto, Long> { 
+import java.util.List;
 
-    List<Produto> findByNomeContainingIgnoreCase(String nome);
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
-    List<Produto> findByPrecoBetween(BigDecimal min, BigDecimal max);
-    // Produtos por restaurante 
-    List<Produto> findByRestauranteId(Long restauranteId); 
+    List<Produto> findByRestaurante(Restaurante restaurante);
 
-    // Apenas produtos disponíveis 
-    List<Produto> findByDisponivelTrue(); 
+    List<Produto> findByCategoria(String categoria);
 
-    // Produtos por categoria 
-    List<Produto> findByCategoria(String categoria); 
-    
-    // Por faixa de preço (menor ou igual) 
-    List<Produto> findByPrecoLessThanEqual(BigDecimal preco); 
-} 
+    List<Produto> findByDisponivelTrue();
+}
