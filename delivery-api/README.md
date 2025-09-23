@@ -36,7 +36,7 @@ A DeliveryTech está em expansão e precisa de um sistema funcional para demonst
 1. Pré-requisitos: JDK 21 instalado
 2. Clone o repositório:
 ```htm
-   **bash**
+   bash
    git clone https://github.com/EvertonTrindadeRibeiro/delivery-api-evertont.ribeiro.git
    cd delivery-api-evertont.ribeiro
    ./mvnw spring-boot:run
