@@ -1,15 +1,9 @@
 package com.deliverytech.delivery.entity;
 
-import java.math.BigDecimal;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "produtos")
 public class Produto {
 
     @Id
@@ -17,16 +11,22 @@ public class Produto {
     private Long id;
 
     private String nome;
+
     private String descricao;
-    private BigDecimal preco;
+
+    private Double preco;
+
     private String categoria;
+
     private Boolean disponivel;
 
+    private Integer estoque;
+
     @ManyToOne
-    @JoinColumn(name = "restaurante_id", nullable = false)
+    @JoinColumn(name = "restaurante_id")
     private Restaurante restaurante;
 
-    public Produto() {}
+    // Getters e Setters
 
     public Long getId() {
         return id;
@@ -52,11 +52,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public BigDecimal getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(BigDecimal preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 
@@ -74,6 +74,14 @@ public class Produto {
 
     public void setDisponivel(Boolean disponivel) {
         this.disponivel = disponivel;
+    }
+
+    public Integer getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Integer estoque) {
+        this.estoque = estoque;
     }
 
     public Restaurante getRestaurante() {
